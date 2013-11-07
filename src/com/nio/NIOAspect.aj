@@ -7,7 +7,7 @@ public aspect NIOAspect {
 	
 	Object around() : adviceexecution() && within(com.nio.NIOAbstract) {
 		Object ret = null;
-		if (new Driver().isActivated("nio")) {
+		if (new Driver().isActivated("nio") && !(new Driver().isActivated("io"))) {
 			ret = proceed();
 		} else {
 			try {

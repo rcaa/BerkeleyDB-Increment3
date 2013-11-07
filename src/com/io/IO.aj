@@ -7,7 +7,7 @@ public aspect IO {
 
 	Object around() : adviceexecution() && within(com.io.IOAbstract) {
 		Object ret = null;
-		if (new Driver().isActivated("io")) {
+		if (new Driver().isActivated("io") && !(new Driver().isActivated("nio"))) {
 			ret = proceed();
 		} else {
 			try {
